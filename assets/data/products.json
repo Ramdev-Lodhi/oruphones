@@ -1,0 +1,62 @@
+[
+  {
+    "imageUrl": "assets/data/iphone.png",
+    "title": "Apple iPhone 13 Pro",
+    "price": 41500,
+    "oldPrice": 45000,
+    "location": "Nijampur, Luc...",
+    "date": "July 25th",
+    "isVerified": true,
+    "isFavorite": false
+  },
+  {
+    "imageUrl": "assets/data/iphone.png",
+    "title": "Samsung Galaxy S22",
+    "price": 52000,
+    "oldPrice": 58000,
+    "location": "Mumbai, India",
+    "date": "Feb 10th",
+    "isVerified": false,
+    "isFavorite": true
+  },
+  {
+    "imageUrl": "assets/data/iphone.png",
+    "title": "OnePlus 11 5G",
+    "price": 39999,
+    "oldPrice": 42999,
+    "location": "Bangalore, India",
+    "date": "Jan 15th",
+    "isVerified": true,
+    "isFavorite": false
+  },
+  {
+    "imageUrl": "assets/data/iphone.png",
+    "title": "OnePlus 11 5G",
+    "price": 39999,
+    "oldPrice": 42999,
+    "location": "Bangalore, India",
+    "date": "Jan 15th",
+    "isVerified": true,
+    "isFavorite": false
+  },
+  {
+    "imageUrl": "assets/data/iphone.png",
+    "title": "OnePlus 11 5G",
+    "price": 39999,
+    "oldPrice": 42999,
+    "location": "Bangalore, India",
+    "date": "Jan 15th",
+    "isVerified": true,
+    "isFavorite": false
+  },
+  {
+    "imageUrl": "assets/data/iphone.png",
+    "title": "OnePlus 11 5G",
+    "price": 39999,
+    "oldPrice": 42999,
+    "location": "Bangalore, India",
+    "date": "Jan 15th",
+    "isVerified": true,
+    "isFavorite": false
+  }
+]
