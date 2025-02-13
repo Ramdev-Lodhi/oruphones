@@ -1,45 +1,31 @@
-// import 'package:flutter/material.dart';
-//
-// class ThemeProvider extends ChangeNotifier {
-//   ThemeData _currentTheme = ThemeData.light();
-//
-//   ThemeData get currentTheme => _currentTheme;
-//
-//   void toggleTheme() {
-//     _currentTheme = _currentTheme == ThemeData.light()
-//         ? ThemeData.dark()
-//         : ThemeData.light();
-//     notifyListeners();
-//   }
-// }
 import 'package:flutter/material.dart';
 
 class ThemeProvider extends ChangeNotifier {
-  ThemeData _currentTheme = _lightTheme; // Default: Light Theme
+  ThemeData _currentTheme = _lightTheme;
 
   static final ThemeData _lightTheme = ThemeData(
     brightness: Brightness.light,
-    scaffoldBackgroundColor: Colors.white, // ✅ Background Pure White
-    primaryColor: Colors.blue, // ✅ Primary Theme Color
+    scaffoldBackgroundColor: Colors.white,
+    primaryColor: Colors.blue,
     colorScheme: ColorScheme.light(
       primary: Colors.blue,
       secondary: Colors.blueAccent,
-      background: Colors.white, // ✅ Background White
+      background: Colors.white,
     ),
     appBarTheme: AppBarTheme(
-      backgroundColor: Colors.white, // ✅ White AppBar
-      foregroundColor: Colors.black, // ✅ Black Text/Icon
-      elevation: 0, // ✅ No Shadow
+      backgroundColor: Colors.white,
+      foregroundColor: Colors.black,
+      elevation: 0,
     ),
     textTheme: TextTheme(
-      bodyLarge: TextStyle(color: Colors.black), // ✅ Black Text
+      bodyLarge: TextStyle(color: Colors.black),
       bodyMedium: TextStyle(color: Colors.black),
     ),
   );
 
   static final ThemeData _darkTheme = ThemeData(
     brightness: Brightness.dark,
-    scaffoldBackgroundColor: Colors.black, // ✅ Dark Mode Background
+    scaffoldBackgroundColor: Colors.black,
     primaryColor: Colors.grey[900],
     colorScheme: ColorScheme.dark(
       primary: Colors.blueGrey,
@@ -51,7 +37,7 @@ class ThemeProvider extends ChangeNotifier {
       foregroundColor: Colors.white,
     ),
     textTheme: TextTheme(
-      bodyLarge: TextStyle(color: Colors.white), // ✅ White Text
+      bodyLarge: TextStyle(color: Colors.white),
       bodyMedium: TextStyle(color: Colors.white),
     ),
   );

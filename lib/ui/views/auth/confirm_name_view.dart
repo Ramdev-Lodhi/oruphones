@@ -68,7 +68,7 @@ class ConfirmNameView extends StatelessWidget {
             children: [
               TextSpan(
                 text: "*", // Asterisk (*)
-                style: _textStyle(12, FontWeight.bold, Colors.red), // 🔴 Red color for '*'
+                style: _textStyle(12, FontWeight.bold, Colors.red),
               ),
             ],
           ),

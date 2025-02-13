@@ -5,15 +5,16 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:flutter/material.dart' as _i7;
+import 'package:flutter/material.dart' as _i8;
 import 'package:flutter/material.dart';
 import 'package:oruphones/ui/views/auth/confirm_name_view.dart' as _i5;
 import 'package:oruphones/ui/views/auth/login_view.dart' as _i3;
 import 'package:oruphones/ui/views/auth/verify_otp_view.dart' as _i4;
-import 'package:oruphones/ui/views/home/home_view.dart' as _i6;
+import 'package:oruphones/ui/views/home/home_view.dart' as _i7;
+import 'package:oruphones/ui/views/main/main_view.dart' as _i6;
 import 'package:oruphones/ui/views/splash/splash_view.dart' as _i2;
 import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i8;
+import 'package:stacked_services/stacked_services.dart' as _i9;
 
 class Routes {
   static const splashView = '/';
@@ -24,6 +25,8 @@ class Routes {
 
   static const confirmNameView = '/confirm-name-view';
 
+  static const mainView = '/main-view';
+
   static const homeView = '/home-view';
 
   static const all = <String>{
@@ -31,6 +34,7 @@ class Routes {
     loginView,
     verifyOtpView,
     confirmNameView,
+    mainView,
     homeView,
   };
 }
@@ -54,40 +58,50 @@ class StackedRouter extends _i1.RouterBase {
       page: _i5.ConfirmNameView,
     ),
     _i1.RouteDef(
+      Routes.mainView,
+      page: _i6.MainView,
+    ),
+    _i1.RouteDef(
       Routes.homeView,
-      page: _i6.HomeView,
+      page: _i7.HomeView,
     ),
   ];
 
   final _pagesMap = <Type, _i1.StackedRouteFactory>{
     _i2.SplashView: (data) {
-      return _i7.MaterialPageRoute<dynamic>(
+      return _i8.MaterialPageRoute<dynamic>(
         builder: (context) => _i2.SplashView(),
         settings: data,
       );
     },
     _i3.LoginView: (data) {
-      return _i7.MaterialPageRoute<dynamic>(
+      return _i8.MaterialPageRoute<dynamic>(
         builder: (context) => _i3.LoginView(),
         settings: data,
       );
     },
     _i4.VerifyOtpView: (data) {
       final args = data.getArgs<VerifyOtpViewArguments>(nullOk: false);
-      return _i7.MaterialPageRoute<dynamic>(
+      return _i8.MaterialPageRoute<dynamic>(
         builder: (context) => _i4.VerifyOtpView(phoneNumber: args.phoneNumber),
         settings: data,
       );
     },
     _i5.ConfirmNameView: (data) {
-      return _i7.MaterialPageRoute<dynamic>(
+      return _i8.MaterialPageRoute<dynamic>(
         builder: (context) => _i5.ConfirmNameView(),
         settings: data,
       );
     },
-    _i6.HomeView: (data) {
-      return _i7.MaterialPageRoute<dynamic>(
-        builder: (context) => _i6.HomeView(),
+    _i6.MainView: (data) {
+      return _i8.MaterialPageRoute<dynamic>(
+        builder: (context) => _i6.MainView(),
+        settings: data,
+      );
+    },
+    _i7.HomeView: (data) {
+      return _i8.MaterialPageRoute<dynamic>(
+        builder: (context) => _i7.HomeView(),
         settings: data,
       );
     },
@@ -122,7 +136,7 @@ class VerifyOtpViewArguments {
   }
 }
 
-extension NavigatorStateExtension on _i8.NavigationService {
+extension NavigatorStateExtension on _i9.NavigationService {
   Future<dynamic> navigateToSplashView([
     int? routerId,
     bool preventDuplicates = true,
@@ -175,6 +189,20 @@ extension NavigatorStateExtension on _i8.NavigationService {
         transition,
   ]) async {
     return navigateTo<dynamic>(Routes.confirmNameView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> navigateToMainView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(Routes.mainView,
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -247,6 +275,20 @@ extension NavigatorStateExtension on _i8.NavigationService {
         transition,
   ]) async {
     return replaceWith<dynamic>(Routes.confirmNameView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithMainView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(Routes.mainView,
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

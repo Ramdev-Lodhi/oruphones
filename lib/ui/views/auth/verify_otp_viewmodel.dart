@@ -53,14 +53,12 @@ class VerifyOtpViewModel extends BaseViewModel {
     setBusy(true);
     String otp = otpControllers.map((controller) => controller.text).join();
     print("Entered OTP: $otp");
-
     bool success = await _authService.verifyOTP(phoneNumber, otp);
     setBusy(false);
-
     if (success) {
       print(_authService.currentUser?.userName);
       if (_authService.currentUser?.userName != null && _authService.currentUser!.userName.isNotEmpty) {
-        _navigationService.clearStackAndShow(Routes.homeView);
+        _navigationService.clearStackAndShow(Routes.mainView);
       } else {
         _navigationService.clearStackAndShow(Routes.confirmNameView);
       }

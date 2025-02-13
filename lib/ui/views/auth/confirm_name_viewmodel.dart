@@ -13,7 +13,7 @@ class ConfirmNameViewModel extends BaseViewModel {
   bool get isButtonEnabled => name.length >= 1;
   void updateName(String value) {
     name = value;
-    notifyListeners(); // UI update hoga
+    notifyListeners();
   }
 
   Future<void> saveName() async {
@@ -21,6 +21,6 @@ class ConfirmNameViewModel extends BaseViewModel {
     setBusy(true);
     await _authService.updateUserName(name);
     setBusy(false);
-    _navigationService.navigateTo(Routes.homeView);
+    _navigationService.navigateTo(Routes.mainView);
   }
 }

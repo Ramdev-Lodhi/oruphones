@@ -24,7 +24,7 @@ abstract class AuthState {}
 class AuthInitial extends AuthState {}
 
 class Authenticated extends AuthState {
-  final UserModel user;  // ✅ Store complete user data
+  final UserModel user;
   Authenticated(this.user);
 }
 
@@ -38,14 +38,14 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<LoginEvent>((event, emit) async {
       bool success = await _authService.sendOTP(event.phoneNumber);
       if (success) {
-        emit(AuthInitial()); // ✅ OTP Sent Successfully
+        emit(AuthInitial());
       }
     });
 
     on<VerifyOtpEvent>((event, emit) async {
       bool success = await _authService.verifyOTP(event.phoneNumber, event.otp);
       if (success) {
-        emit(Authenticated(_authService.currentUser!)); // ✅ Store User Data
+        emit(Authenticated(_authService.currentUser!));
       }
     });
 

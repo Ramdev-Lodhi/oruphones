@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+import 'package:stacked_services/stacked_services.dart';
+import '../../../app/app.locator.dart';
+import '../../../app/app.router.dart';
 import 'login_viewmodel.dart';
 
 class LoginView extends StatelessWidget {
@@ -33,7 +36,10 @@ class LoginView extends StatelessWidget {
   AppBar _buildAppBar(BuildContext context) {
     return AppBar(
       actions: [
-        IconButton(icon: Icon(Icons.cancel), onPressed: () => Navigator.pop(context)),
+        IconButton(
+            icon: Icon(Icons.cancel),
+            onPressed: () => locator<NavigationService>()
+                .clearStackAndShow(Routes.mainView)),
       ],
     );
   }
@@ -42,10 +48,13 @@ class LoginView extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Image.asset("assets/logo/oruphones.png", width: 136, height: 80, fit: BoxFit.contain),
+        Image.asset("assets/logo/oruphones.png",
+            width: 136, height: 80, fit: BoxFit.contain),
         SizedBox(height: 45),
-        Text("Welcome", style: _textStyle(28, FontWeight.w600, Color(0xFF3F3E8F))),
-        Text("Sign in to continue", style: _textStyle(14, FontWeight.w400, Color(0xFF707070))),
+        Text("Welcome",
+            style: _textStyle(28, FontWeight.w600, Color(0xFF3F3E8F))),
+        Text("Sign in to continue",
+            style: _textStyle(14, FontWeight.w400, Color(0xFF707070))),
       ],
     );
   }
@@ -54,7 +63,8 @@ class LoginView extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text("Enter Your Phone Number", style: _textStyle(12, FontWeight.bold, Color(0xFF707070))),
+        Text("Enter Your Phone Number",
+            style: _textStyle(12, FontWeight.bold, Color(0xFF707070))),
         TextField(
           onChanged: viewModel.updatePhoneNumber,
           keyboardType: TextInputType.phone,
@@ -66,7 +76,8 @@ class LoginView extends StatelessWidget {
             focusedBorder: _inputBorder(),
             prefixIcon: Padding(
               padding: EdgeInsets.only(left: 16, right: 10),
-              child: Text("+91", style: _textStyle(14, FontWeight.w400, Colors.black)),
+              child: Text("+91",
+                  style: _textStyle(14, FontWeight.w400, Colors.black)),
             ),
             prefixIconConstraints: BoxConstraints(minWidth: 0, minHeight: 0),
             hintText: "Mobile Number",
@@ -113,10 +124,12 @@ class LoginView extends StatelessWidget {
       width: 358,
       height: 55,
       child: ElevatedButton(
-        onPressed: viewModel.isButtonEnabled ? () => viewModel.sendOTP(context) : null,
+        onPressed:
+            viewModel.isButtonEnabled ? () => viewModel.sendOTP(context) : null,
         style: ElevatedButton.styleFrom(
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
-          backgroundColor: viewModel.isChecked ? Color(0xFF3F3E8F) : Color(0xFFB1B1B1),
+          backgroundColor:
+              viewModel.isChecked ? Color(0xFF3F3E8F) : Color(0xFFB1B1B1),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -131,7 +144,11 @@ class LoginView extends StatelessWidget {
   }
 
   TextStyle _textStyle(double size, FontWeight weight, Color color) {
-    return TextStyle(fontFamily: 'Poppins', fontSize: size, fontWeight: weight, color: color);
+    return TextStyle(
+        fontFamily: 'Poppins',
+        fontSize: size,
+        fontWeight: weight,
+        color: color);
   }
 
   OutlineInputBorder _inputBorder() {
