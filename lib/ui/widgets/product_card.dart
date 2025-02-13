@@ -103,7 +103,6 @@ class _ProductCardState extends State<ProductCard> {
                           SizedBox(width: 6),
                           Text('Like New',
                               style: TextStyle(
-                                  decoration: TextDecoration.lineThrough,
                                   fontSize: 10,
                                   color: Colors.grey)),
                         ],

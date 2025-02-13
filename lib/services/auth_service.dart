@@ -94,25 +94,29 @@ class AuthService {
   //  Update User Profile
   Future<bool> updateUserName(String name) async {
     try {
-      Response? response = await Dio().post(
-        "https://http://40.90.224.241:5000/update",
+      String csrfToken = '6caa630f-dbba-4c62-ac3e-922680cf493f';
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      await prefs.setString("userName", name);
+      Response response = await Dio().post(
+        "http://40.90.224.241:5000/update",
         data: {"countryCode": 91, "name": name},
         options: Options(
           headers: {
-            "X-CSRF-TOKEN": "6caa630f-dbba-4c62-ac3e-922680cf493f",
+            "X-Csrf-Token": csrfToken,
             "Content-Type": "application/json"
           },
         ),
       );
-      if (response != null && response.statusCode == 200) {
+      String status = response.data["status"];
+      if (status =="SUCCESS") {
         SharedPreferences prefs = await SharedPreferences.getInstance();
         await prefs.setString("userName", name);
         print("Name Updated Successfully");
-
         return true;
       }
     } catch (e) {
       print("Error in updateUserName: $e");
+      return false;
     }
     return false;
   }
