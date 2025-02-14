@@ -1,49 +1,55 @@
 class ProductModel {
-  final String imageUrl;
-  final String title;
-  final double price;
-  final double oldPrice;
-  final String location;
-  final String date;
+  final String id;
+  final String deviceCondition;
+  final String listedBy;
+  final String deviceStorage;
+  final List<ImageModel> images;
+  final ImageModel? defaultImage;
+  final String listingState;
+  final String listingLocation;
   final bool isVerified;
-  final bool isFavorite;
 
   ProductModel({
-    required this.imageUrl,
-    required this.title,
-    required this.price,
-    required this.oldPrice,
-    required this.location,
-    required this.date,
-    this.isVerified = false,
-    this.isFavorite = false,
+    required this.id,
+    required this.deviceCondition,
+    required this.listedBy,
+    required this.deviceStorage,
+    required this.images,
+    required this.defaultImage,
+    required this.listingState,
+    required this.listingLocation,
+    required this.isVerified,
   });
 
-  // Factory method to create an instance from JSON
   factory ProductModel.fromJson(Map<String, dynamic> json) {
     return ProductModel(
-      imageUrl: json['imageUrl'],
-      title: json['title'],
-      price: json['price'].toDouble(),
-      oldPrice: json['oldPrice'].toDouble(),
-      location: json['location'],
-      date: json['date'],
-      isVerified: json['isVerified'] ?? false,
-      isFavorite: json['isFavorite'] ?? false,
+      id: json["_id"] ?? "",
+      deviceCondition: json["deviceCondition"] ?? "",
+      listedBy: json["listedBy"] ?? "",
+      deviceStorage: json["deviceStorage"] ?? "",
+      images: (json["images"] as List<dynamic>)
+          .map((img) => ImageModel.fromJson(img))
+          .toList(),
+      defaultImage: json["defaultImage"] != null
+          ? ImageModel.fromJson(json["defaultImage"])
+          : null,
+      listingState: json["listingState"] ?? "",
+      listingLocation: json["listingLocation"] ?? "",
+      isVerified: json["isVarified"] == "accepted",
     );
   }
+}
 
-  // Convert object to JSON format
-  Map<String, dynamic> toJson() {
-    return {
-      'imageUrl': imageUrl,
-      'title': title,
-      'price': price,
-      'oldPrice': oldPrice,
-      'location': location,
-      'date': date,
-      'isVerified': isVerified,
-      'isFavorite': isFavorite,
-    };
+class ImageModel {
+  final String thumbImage;
+  final String fullImage;
+
+  ImageModel({required this.thumbImage, required this.fullImage});
+
+  factory ImageModel.fromJson(Map<String, dynamic> json) {
+    return ImageModel(
+      thumbImage: json["thumbImage"] ?? "",
+      fullImage: json["fullImage"] ?? "",
+    );
   }
 }

@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../models/user_model.dart';
@@ -7,25 +8,20 @@ class AuthService {
   final ApiService _apiService = ApiService();
   UserModel? currentUser;
 
-  //  OTP Create (Login)
+  // Send OTP (Login)
   Future<bool> sendOTP(String phoneNumber) async {
     try {
-      int mobileNumber = int.parse(phoneNumber);
       Response? response = await _apiService.postRequest(
         "/login/otpCreate",
-        {"countryCode": 91, "mobileNumber": mobileNumber},
+        {"countryCode": 91, "mobileNumber": int.parse(phoneNumber)},
       );
 
-      if (response != null && response.statusCode == 200) {
-        String status = response.data["status"];
-        if (status == "SUCCESS") {
-          print(
-              "OTP Sent Successfully to +${response.data['dataObject']['mobileNumber']}");
-          return true;
-        } else {
-          print("OTP Failed: ${response.data['reason']}");
-          return false;
-        }
+      if (response != null &&
+          response.statusCode == 200 &&
+          response.data["status"] == "SUCCESS") {
+        print(
+            "OTP Sent Successfully to ${response.data['dataObject']['mobileNumber']}");
+        return true;
       }
       return false;
     } catch (e) {
@@ -34,56 +30,52 @@ class AuthService {
     }
   }
 
-  //  OTP Validate and User Data Fetch
+  // Verify OTP and Fetch User Data
   Future<bool> verifyOTP(String phoneNumber, String otp) async {
     try {
-      int mobileNumber = int.parse(phoneNumber);
-      int OTP = int.parse(otp);
+      Response? response = await _apiService.postRequest(
+        "/login/otpValidate",
+        {
+          "countryCode": 91,
+          "mobileNumber": int.parse(phoneNumber),
+          "otp": int.parse(otp)
+        },
+      );
 
-      Response? response = await _apiService.postRequest("/login/otpValidate",
-          {"countryCode": 91, "mobileNumber": mobileNumber, "otp": OTP});
-
-      if (response != null && response.statusCode == 200) {
-        String status = response.data["status"];
-        if (status == "SUCCESS") {
-          currentUser = UserModel.fromJson(response.data["user"]);
-          print("OTP Verified Successfully!");
-          SharedPreferences prefs = await SharedPreferences.getInstance();
-          await prefs.setBool("isLoggedIn", true);
-          await prefs.setString("mobileNumber", currentUser!.mobileNumber);
-          await prefs.setString("userName", currentUser!.userName);
-          await prefs.setString("joined_date", currentUser!.createdDate);
-
-          return true;
+      if (response != null &&
+          response.statusCode == 200 &&
+          response.data["status"] == "SUCCESS") {
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        if (response.headers.map.containsKey("set-cookie")) {
+          String? setCookie = response.headers["set-cookie"]?.first;
+          if (setCookie != null && setCookie.contains("session=")) {
+            String newSessionId = setCookie.split(";").first.split("=").last;
+            await prefs.setString("sessionId", newSessionId);
+            return true;
+          }
         }
       }
     } catch (e) {
-      print(" Error in verifyOTP: $e");
+      print("Error in verifyOTP: $e");
     }
     return false;
   }
 
-  //  Get Current User from Local Storage
-  Future<String?> getCurrentUser() async {
-    try {
-      SharedPreferences prefs = await SharedPreferences.getInstance();
-      var currentUser = prefs.getString("userName") ?? " ";
-      return currentUser;
-    } catch (e) {
-      print("Error in getCurrentUser: $e");
-    }
-    return null;
-  }
-
-  //  Check if User is Logged In
+  // Check if User is Logged In
   Future<bool> isLoggedIn() async {
     try {
       SharedPreferences prefs = await SharedPreferences.getInstance();
-      bool isLoggedIn = prefs.getBool("isLoggedIn") ?? false;
-      if (isLoggedIn) {
+      Response? response = await _apiService.getRequest("/isLoggedIn");
+      print(response);
+      if (response != null &&
+          response.statusCode == 200 &&
+          response.data["isLoggedIn"] == true) {
+        currentUser = UserModel.fromJson(response.data);
+        print(currentUser?.userName);
+        await prefs.setBool("isLoggedIn", true);
+        await prefs.setString("csrfToken", jsonEncode(currentUser!.csrfToken));
+        await prefs.setString("userData", jsonEncode(currentUser!.toJson()));
         return true;
-      } else {
-        return false;
       }
     } catch (e) {
       print("Error in isLoggedIn: $e");
@@ -91,45 +83,57 @@ class AuthService {
     return false;
   }
 
-  //  Update User Profile
+  Future<Map<String, dynamic>> getUserData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    bool isLoggedIn = prefs.getBool("isLoggedIn") ?? false;
+    String? userDataString = prefs.getString("userData");
+
+    if (!isLoggedIn || userDataString == null) {
+      return {"isLoggedIn": false};
+    }
+
+    Map<String, dynamic> userData = jsonDecode(userDataString);
+    return {
+      "isLoggedIn": true,
+      "userName": userData["userName"] ?? "ORU User",
+      "createdDate": userData["createdDate"] ?? "N/A",
+    };
+  }
+  // Update User Name
   Future<bool> updateUserName(String name) async {
     try {
-      String csrfToken = '6caa630f-dbba-4c62-ac3e-922680cf493f';
       SharedPreferences prefs = await SharedPreferences.getInstance();
-      await prefs.setString("userName", name);
-      Response response = await Dio().post(
-        "http://40.90.224.241:5000/update",
-        data: {"countryCode": 91, "name": name},
-        options: Options(
-          headers: {
-            "X-Csrf-Token": csrfToken,
-            "Content-Type": "application/json"
-          },
-        ),
+      Response? response = await _apiService.postRequest(
+        "/update",
+        {"countryCode": 91, "userName": name},
+        headers: {
+          "X-CSRF-Token": "${currentUser?.csrfToken}",
+        },
       );
-      String status = response.data["status"];
-      if (status =="SUCCESS") {
-        SharedPreferences prefs = await SharedPreferences.getInstance();
+
+      print(response);
+
+      if (response?.statusCode == 200 &&
+          response?.data["status"] == "SUCCESS") {
         await prefs.setString("userName", name);
+        UserModel().userName = name;
         print("Name Updated Successfully");
         return true;
       }
+      return false;
     } catch (e) {
       print("Error in updateUserName: $e");
-      return false;
     }
     return false;
   }
 
-  //  Logout
+  // Logout
   Future<bool> logout() async {
     try {
       Response? response = await _apiService.getRequest("/logout");
-      bool isLoggedIn = response?.data["isLoggedIn"] ?? false;
-      if (!isLoggedIn) {
+      if (response != null && response.statusCode == 200) {
         SharedPreferences prefs = await SharedPreferences.getInstance();
-        await prefs.setBool("isLoggedIn", false);
-        await prefs.remove("mobileNumber");
+        await prefs.clear();
         currentUser = null;
         print("User Logged Out Successfully!");
         return true;

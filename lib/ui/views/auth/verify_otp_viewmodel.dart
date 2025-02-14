@@ -56,11 +56,15 @@ class VerifyOtpViewModel extends BaseViewModel {
     bool success = await _authService.verifyOTP(phoneNumber, otp);
     setBusy(false);
     if (success) {
-      print(_authService.currentUser?.userName);
-      if (_authService.currentUser?.userName != null && _authService.currentUser!.userName.isNotEmpty) {
-        _navigationService.clearStackAndShow(Routes.mainView);
-      } else {
-        _navigationService.clearStackAndShow(Routes.confirmNameView);
+      bool isLogin = await _authService.isLoggedIn();
+      if (isLogin) {
+        print(_authService.currentUser?.userName);
+        if (_authService.currentUser?.userName != null &&
+            _authService.currentUser!.userName.isNotEmpty) {
+          _navigationService.clearStackAndShow(Routes.mainView);
+        } else {
+          _navigationService.clearStackAndShow(Routes.confirmNameView);
+        }
       }
     } else {
       ScaffoldMessenger.of(context).showSnackBar(

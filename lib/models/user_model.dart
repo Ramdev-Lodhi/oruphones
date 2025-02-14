@@ -1,46 +1,64 @@
+import 'dart:convert';
+
 class UserModel {
-  final String userName;
-  final String email;
-  final String profilePicPath;
-  final String city;
-  final String state;
-  final String mobileNumber;
-  final bool isAccountExpired;
-  final String createdDate;
-  final List<String> favListings;
-  final String userType;
-  final bool waOptIn;
-  final List<dynamic> userListings;
+  static final UserModel _instance = UserModel._internal();
 
-  UserModel({
-    required this.userName,
-    required this.email,
-    required this.profilePicPath,
-    required this.city,
-    required this.state,
-    required this.mobileNumber,
-    required this.isAccountExpired,
-    required this.createdDate,
-    required this.favListings,
-    required this.userType,
-    required this.waOptIn,
-    required this.userListings,
-  });
+  factory UserModel() {
+    return _instance;
+  }
 
+  UserModel._internal();
+  String userName = "";
+  String email = "";
+  String profilePicPath = "";
+  String city = "";
+  String state = "";
+  String mobileNumber = "";
+  bool isAccountExpired = false;
+  String createdDate = "";
+  List<String> favListings = [];
+  List<String> userListings = [];
+  String userType = "";
+  bool waOptIn = false;
+  String sessionId = "";
+  String csrfToken = "";
+
+  // Factory Constructor for JSON Parsing
   factory UserModel.fromJson(Map<String, dynamic> json) {
-    return UserModel(
-      userName: json['userName'] ?? "",
-      email: json['email'] ?? "",
-      profilePicPath: json['profilePicPath'] ?? "",
-      city: json['city'] ?? "",
-      state: json['state'] ?? "",
-      mobileNumber: json['mobileNumber'] ?? "",
-      isAccountExpired: json['isAccountExpired'] ?? false,
-      createdDate: json['createdDate'] ?? "",
-      favListings: List<String>.from(json['favListings'] ?? []),
-      userType: json['userType'] ?? "",
-      waOptIn: json['WAOptIn'] ?? false,
-      userListings: json['userListings'] ?? [],
-    );
+    return UserModel()
+      ..userName = json["user"]["userName"] ?? ""
+      ..email = json["user"]["email"] ?? ""
+      ..profilePicPath = json["user"]["profilePicPath"] ?? ""
+      ..city = json["user"]["city"] ?? ""
+      ..state = json["user"]["state"] ?? ""
+      ..mobileNumber = json["user"]["mobileNumber"] ?? ""
+      ..isAccountExpired = json["user"]["isAccountExpired"] ?? false
+      ..createdDate = json["user"]["createdDate"] ?? ""
+      ..favListings = List<String>.from(json["user"]["favListings"] ?? [])
+      ..userListings = List<String>.from(json["user"]["userListings"] ?? [])
+      ..userType = json["user"]["userType"] ?? ""
+      ..waOptIn = json["user"]["WAOptIn"] ?? false
+      ..sessionId = json["sessionId"] ?? ""
+      ..csrfToken = json["csrfToken"] ?? "";
+  }
+
+  // Convert UserModel to JSON
+  Map<String, dynamic> toJson() {
+    return {
+      "userName": userName,
+      "email": email,
+      "profilePicPath": profilePicPath,
+      "city": city,
+      "state": state,
+      "mobileNumber": mobileNumber,
+      "isAccountExpired": isAccountExpired,
+      "createdDate": createdDate,
+      "favListings": favListings,
+      "userListings": userListings,
+      "userType": userType,
+      "WAOptIn": waOptIn,
+      "sessionId": sessionId,
+      "csrfToken": csrfToken,
+    };
   }
 }

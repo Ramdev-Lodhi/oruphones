@@ -11,7 +11,7 @@ class ProductService {
     try {
       Response? response = await _apiService.getRequest("/faq");
       if (response != null && response.statusCode == 200) {
-        List<dynamic> data = response.data['FAQs']; // Extract 'FAQs' array
+        List<dynamic> data = response.data['FAQs'];
         return data.map((json) => FAQModel.fromJson(json)).toList();
       }
     } catch (e) {
@@ -19,7 +19,6 @@ class ProductService {
     }
     return null;
   }
-
 
   // Apply Filters
   Future<List<dynamic>?> applyFilters(Map<String, dynamic> filters) async {
@@ -36,7 +35,7 @@ class ProductService {
   // Get Products with Images
   Future<List<BrandModel>?> getBrands() async {
     Response? response = await _apiService.getRequest("/makeWithImages");
-print(response);
+    print(response);
     if (response?.data != null && response?.data is Map<String, dynamic>) {
       List<dynamic> brandList = response?.data["dataObject"] ?? [];
       return brandList.map((brand) => BrandModel.fromJson(brand)).toList();

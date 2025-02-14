@@ -9,16 +9,13 @@ class SplashViewModel extends BaseViewModel {
   final NavigationService _navigationService = locator<NavigationService>();
 
   void initialize() async {
-    await Future.delayed(Duration(seconds: 3));
+    await Future.delayed(Duration(seconds: 1));
 
     var isLogin = await _authService.isLoggedIn();
     print("User logged in: $isLogin");
-
     if (isLogin) {
-      var user = await _authService.getCurrentUser();
-      print("Fetched user: $user");
-
-      if (user != null && user.isNotEmpty) {
+      print("Fetched user: $_authService.currentUser?.userName");
+      if (_authService.currentUser!.userName.isNotEmpty) {
         _navigationService.replaceWith(Routes.mainView);
       } else {
         _navigationService.replaceWith(Routes.confirmNameView);

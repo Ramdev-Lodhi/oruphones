@@ -23,6 +23,7 @@ void main() async {
   await Firebase.initializeApp();
   await NotificationService.initialize();
   await MyFirebaseMessagingService.initialize();
+
   setupLocator();
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 

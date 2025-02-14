@@ -24,11 +24,27 @@ class HomeViewModel extends BaseViewModel {
   List<ProductModel> productList = [];
 
   Future<void> loadProducts() async {
-    final String response =
-        await rootBundle.loadString('assets/data/products.json');
-    final List<dynamic> data = json.decode(response);
-    productList = data.map((item) => ProductModel.fromJson(item)).toList();
-    notifyListeners();
+    setBusy(true); // Show loading state
+    try {
+      final String response =
+          await rootBundle.loadString('assets/data/products.json');
+      final data = json.decode(response);
+
+      // print("Full JSON: $data");
+      // print("Products List: ${data['products']}");
+      if (data["products"] == null) {
+        throw Exception("Products key is missing in JSON");
+      }
+      productList = (data["products"] as List)
+          .map((item) => ProductModel.fromJson(item))
+          .toList();
+      // print("Mapped Products: $productList");
+    } catch (e) {
+      // print("Error loading products: $e");
+    } finally {
+      setBusy(false);
+      notifyListeners();
+    }
   }
 
   HomeViewModel() {

@@ -1,10 +1,16 @@
+
 import 'package:stacked/stacked.dart';
+import 'package:stacked_services/stacked_services.dart';
+import '../../../app/app.locator.dart';
+import '../../../app/app.router.dart';
 import '../../../models/filter_model.dart';
+import '../../../models/product_model.dart';
 import '../../../services/filter_service.dart';
 
 
 class FilterViewModel extends BaseViewModel {
   final FilterService _filterService = FilterService();
+  final NavigationService _navigationService = locator<NavigationService>();
   FilterModel? filters;
   String selectedCategory = "Brand";
 
@@ -15,8 +21,6 @@ class FilterViewModel extends BaseViewModel {
   double minPrice = 0;
   double maxPrice = 100000;
   double priceRange = 50000;
-
-
 
 
   Future<void> loadFilters() async {
@@ -33,7 +37,7 @@ class FilterViewModel extends BaseViewModel {
     }
 
     setBusy(false);
-    notifyListeners();  // UI Update ke liye notifyListeners add kiya
+    notifyListeners();
   }
 
 
@@ -71,12 +75,12 @@ class FilterViewModel extends BaseViewModel {
     notifyListeners();
   }
 
-  // Check if All Options Selected for a Category
+
   bool isAllSelected(String category) {
     return selectedOptions[category]?.length == (filters?.getOptions(category).length ?? 0);
   }
 
-  // Select/Deselect All for a Category
+
   void toggleSelectAll(String category, bool selectAll) {
     if (selectAll) {
       selectedOptions[category] = List.from(filters!.getOptions(category));
@@ -102,24 +106,63 @@ class FilterViewModel extends BaseViewModel {
 
   void setMinPrice(String value) {
     double parsedValue = double.tryParse(value) ?? 1000;
-    minPrice = parsedValue.clamp(1000, maxPrice); // Ensure minPrice is within range
+    minPrice = parsedValue.clamp(1000, maxPrice);
     notifyListeners();
   }
 
   void setMaxPrice(String value) {
     double parsedValue = double.tryParse(value) ?? 50000;
-    maxPrice = parsedValue.clamp(minPrice, 50000); // Ensure maxPrice is within range
+    maxPrice = parsedValue.clamp(minPrice, 50000);
     notifyListeners();
   }
 
   void updatePriceRange(double value) {
-    priceRange = value.clamp(1000, 50000); // Ensure price is within range
+    priceRange = value.clamp(1000, 50000);
     notifyListeners();
   }
+  List<ProductModel> filterproduct = [];
+  void applyFilters() async {
+    print("Applying Filters...");
 
-  void applyFilters() {
-    print("Filters Applied!");
+    Map<String, dynamic> filterParams = {
+      "filter": {
+        "condition": selectedOptions["Condition"] ?? [],
+        "make": selectedBrands.isNotEmpty ? selectedBrands : [],
+        "storage": selectedOptions["Storage"] ?? [],
+        "ram": selectedOptions["RAM"] ?? [],
+        "warranty": selectedOptions["Warranty"] ?? [],
+        "priceRange": [minPrice.toInt(), maxPrice.toInt()],
+        "verified": selectedOptions["Verification"]?.contains("Verified Only") ?? true,
+        "sort": {},
+        "page": 1,
+      }
+    };
+
+    print(filterParams);
+
+    setBusy(true);
+    try {
+      var response = await _filterService.fetchFilteredData(filterParams);
+      print("Filtered Response: $response");
+
+      if (response != null) {
+        filterproduct = response.map<ProductModel>((json) => ProductModel.fromJson(json)).toList();
+        print(filterproduct);
+        print("Filtered Data Fetched Successfully!");
+        _navigationService.navigateTo(
+          Routes.filterproductView,
+          arguments: FilterproductViewArguments(filterproduct: filterproduct),
+        );
+      } else {
+        filterproduct = [];
+        print("No Data Found!");
+      }
+    } catch (e) {
+      print("Error fetching filtered data viewmodel: $e");
+    }
+    setBusy(false);
   }
+
 
   void resetFilters() {
     selectedBrands.clear();

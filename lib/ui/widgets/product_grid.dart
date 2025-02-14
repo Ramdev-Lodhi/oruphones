@@ -9,19 +9,24 @@ class ProductGrid extends StatelessWidget {
     return ViewModelBuilder<HomeViewModel>.reactive(
       viewModelBuilder: () => HomeViewModel(),
       builder: (context, viewModel, child) {
-        return GridView.builder(
-          shrinkWrap: true,
-          physics: NeverScrollableScrollPhysics(),
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            childAspectRatio: 0.65,
-            crossAxisSpacing: 8,
-            mainAxisSpacing: 8,
+        print('Data ${viewModel.productList.length}');
+        return Padding(
+          padding: const EdgeInsets.only(left: 10,right: 10),
+          child: GridView.builder(
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              childAspectRatio: 0.55,
+              crossAxisSpacing: 2,
+              mainAxisSpacing: 4,
+            ),
+
+            itemCount: viewModel.productList.length,
+            itemBuilder: (context, index) {
+              return ProductCard(product: viewModel.productList[index]);
+            },
           ),
-          itemCount: viewModel.productList.length,
-          itemBuilder: (context, index) {
-            return ProductCard(product: viewModel.productList[index]);
-          },
         );
       },
     );

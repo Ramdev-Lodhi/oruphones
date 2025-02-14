@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:oruphones/ui/views/filter/filterproduct_view.dart';
 import 'package:stacked/stacked_annotations.dart';
 import '../ui/views/main/main_view.dart';
 import '../ui/views/splash/splash_view.dart';
@@ -16,6 +17,7 @@ import '../ui/views/home/home_view.dart';
     MaterialRoute(page: ConfirmNameView),
     MaterialRoute(page: MainView),
     MaterialRoute(page: HomeView),
+    MaterialRoute(page: FilterproductView, guards: []),
   ],
 )
 class AppRouter {}
