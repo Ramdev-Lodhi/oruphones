@@ -5,14 +5,15 @@ import 'package:oruphones/models/product_model.dart';
 class ProductCard extends StatefulWidget {
   final ProductModel product;
 
-  const ProductCard({Key? key, required this.product}) : super(key: key);
-
+  final VoidCallback onFavoriteToggle;
+  // const ProductCard({Key? key, required this.product}) : super(key: key);
+  const ProductCard({Key? key, required this.product, required this.onFavoriteToggle}) : super(key: key);
   @override
   _ProductCardState createState() => _ProductCardState();
 }
 
 class _ProductCardState extends State<ProductCard> {
-  bool isFavorite = false;
+
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +33,7 @@ class _ProductCardState extends State<ProductCard> {
                 borderRadius: BorderRadius.vertical(top: Radius.circular(12)),
                 child: Image.network(
                   product.defaultImage?.fullImage ?? "",
-                  height: 170,
+                  height: 175,
                   width: double.infinity,
                   fit: BoxFit.cover,
                 ),
@@ -75,14 +76,10 @@ class _ProductCardState extends State<ProductCard> {
                 top: 8,
                 right: 8,
                 child: GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      isFavorite = !isFavorite;
-                    });
-                  },
+                  onTap: widget.onFavoriteToggle,
                   child: Icon(
-                    isFavorite ? Icons.favorite : Icons.favorite_border,
-                    color: isFavorite ? Colors.red : Colors.grey,
+                    product.isLiked ? Icons.favorite : Icons.favorite_border,
+                    color: product.isLiked ? Colors.red : Colors.grey,
                     size: 26,
                   ),
                 ),

@@ -133,7 +133,6 @@ class BrandListWidget extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-
               Container(
                 padding: EdgeInsets.symmetric(vertical: 5, horizontal: 8),
                 decoration: BoxDecoration(

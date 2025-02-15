@@ -108,7 +108,7 @@ class MainDrawer extends StatelessWidget {
                     onTap: () async {
                       bool isLoggedOut = await _authService.logout();
                       if (isLoggedOut) {
-                        locator<NavigationService>().clearStackAndShow(Routes.loginView);
+                        locator<NavigationService>().clearStackAndShow(Routes.splashView);
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(content: Text("Logout failed, please try again")),

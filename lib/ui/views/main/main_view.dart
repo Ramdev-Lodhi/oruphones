@@ -36,13 +36,14 @@ class _MainViewState extends State<MainView> {
                     controller: viewModel.scrollController,
                     headerSliverBuilder: (context, innerBoxIsScrolled) => [
                       SilverAppBar(
-                          onMenuTap: () =>
-                              scaffoldKey.currentState?.openDrawer()),
-                      SliverPersistentHeader(
-                        pinned: true,
-                        floating: true,
-                        delegate: _SearchBarDelegate(),
+                          onMenuTap: () => scaffoldKey.currentState?.openDrawer(),
+                          scrollController: viewModel.scrollController,
                       ),
+                      // SliverPersistentHeader(
+                      //   pinned: true,
+                      //   floating: true,
+                      //   delegate: _SearchBarDelegate(),
+                      // ),
                     ],
                     body: IndexedStack(
                       index: viewModel.selectedIndex,
@@ -94,10 +95,10 @@ class _MainViewState extends State<MainView> {
 
 class _SearchBarDelegate extends SliverPersistentHeaderDelegate {
   @override
-  double get minExtent => 60;
+  double get minExtent => 80;
 
   @override
-  double get maxExtent => 60;
+  double get maxExtent => 80;
 
   @override
   Widget build(

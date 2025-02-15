@@ -1,13 +1,103 @@
 {
   "products": [
     {
-      "_id": "67a73ced73f62b1f6a59e378",
+      "_id": "67a73ced73f62b116a59e378",
       "deviceCondition": "Excellent",
       "listedBy": "Kiran",
       "deviceStorage": "256 GB",
       "images": [
         {
-          "thumbImage": "https://www.oruphones.com/_next/image?url=https%3A%2F%2Fdemo-bucket-c2c-001.s3.amazonaws.com%2FFull-1739561154384-NX.webp&w=1200&q=75",
+          "thumbImage": "https://res.cloudinary.com/dflq4agdp/image/upload/v1739604789/image_or9dnc.png",
+          "fullImage": "https://res.cloudinary.com/dflq4agdp/image/upload/v1739604789/image_or9dnc.png"
+        }
+      ],
+      "defaultImage": {
+        "fullImage": "https://res.cloudinary.com/dflq4agdp/image/upload/v1739604789/image_or9dnc.png"
+      },
+      "listingState": "Karnataka",
+      "listingLocation": "Bengaluru",
+      "isVarified": "rejected"
+    },
+    {
+      "_id": "67a73ced73f62b1f6a59e379",
+      "deviceCondition": "Good",
+      "listedBy": "Amit Sharma",
+      "deviceStorage": "128 GB",
+      "images": [
+        {
+          "thumbImage": "https://res.cloudinary.com/dflq4agdp/image/upload/v1739604789/image_or9dnc.png",
+          "fullImage": "https://res.cloudinary.com/dflq4agdp/image/upload/v1739604789/image_or9dnc.png"
+        }
+      ],
+      "defaultImage": {
+        "fullImage": "https://res.cloudinary.com/dflq4agdp/image/upload/v1739604789/image_or9dnc.png"
+      },
+      "listingState": "Maharashtra",
+      "listingLocation": "Mumbai",
+      "isVarified": "accepted"
+    },
+    {
+      "_id": "67a73ced73f62b1f6a59e380",
+      "deviceCondition": "Like New",
+      "listedBy": "Sneha Patil",
+      "deviceStorage": "64 GB",
+      "images": [
+        {
+          "thumbImage": "https://res.cloudinary.com/dflq4agdp/image/upload/v1739604789/image_or9dnc.png",
+          "fullImage": "https://res.cloudinary.com/dflq4agdp/image/upload/v1739604789/image_or9dnc.png"
+        }
+      ],
+      "defaultImage": {
+        "fullImage": "https://res.cloudinary.com/dflq4agdp/image/upload/v1739604789/image_or9dnc.png"
+      },
+      "listingState": "Delhi",
+      "listingLocation": "New Delhi",
+      "isVarified": "accepted"
+    },
+    {
+      "_id": "67a73ced73f62b1f6a59e381",
+      "deviceCondition": "Fair",
+      "listedBy": "Rahul Verma",
+      "deviceStorage": "32 GB",
+      "images": [
+        {
+          "thumbImage": "https://res.cloudinary.com/dflq4agdp/image/upload/v1739604789/image_or9dnc.png",
+          "fullImage": "https://res.cloudinary.com/dflq4agdp/image/upload/v1739604789/image_or9dnc.png"
+        }
+      ],
+      "defaultImage": {
+        "fullImage": "https://res.cloudinary.com/dflq4agdp/image/upload/v1739604789/image_or9dnc.png"
+      },
+      "listingState": "Tamil Nadu",
+      "listingLocation": "Chennai",
+      "isVarified": "accepted"
+    },
+    {
+      "_id": "67a73ced73f62b1f6a59e382",
+      "deviceCondition": "Excellent",
+      "listedBy": "Pooja Sharma",
+      "deviceStorage": "512 GB",
+      "images": [
+        {
+          "thumbImage": "https://res.cloudinary.com/dflq4agdp/image/upload/v1739604789/image_or9dnc.png",
+          "fullImage": "https://res.cloudinary.com/dflq4agdp/image/upload/v1739604789/image_or9dnc.png"
+        }
+      ],
+      "defaultImage": {
+        "fullImage": "https://res.cloudinary.com/dflq4agdp/image/upload/v1739604789/image_or9dnc.png"
+      },
+      "listingState": "West Bengal",
+      "listingLocation": "Kolkata",
+      "isVarified": "accepted"
+    },
+    {
+      "_id": "67a73ced73f6211f6a59e378",
+      "deviceCondition": "Excellent",
+      "listedBy": "Kiran",
+      "deviceStorage": "256 GB",
+      "images": [
+        {
+          "thumbImage": "https://res.cloudinary.com/dflq4agdp/image/upload/v1739604789/image_or9dnc.png",
           "fullImage": "https://www.oruphones.com/_next/image?url=https%3A%2F%2Fdemo-bucket-c2c-001.s3.amazonaws.com%2FFull-1739561154384-NX.webp&w=1200&q=75"
         }
       ],
@@ -19,7 +109,7 @@
       "isVarified": "rejected"
     },
     {
-      "_id": "67a73ced73f62b1f6a59e379",
+      "_id": "67a73ced73f62b1f6a59h379",
       "deviceCondition": "Good",
       "listedBy": "Amit Sharma",
       "deviceStorage": "128 GB",
@@ -37,7 +127,7 @@
       "isVarified": "accepted"
     },
     {
-      "_id": "67a73ced73f62b1f6a59e380",
+      "_id": "67a73cgd73f62b1f6a59e380",
       "deviceCondition": "Like New",
       "listedBy": "Sneha Patil",
       "deviceStorage": "64 GB",
@@ -55,7 +145,7 @@
       "isVarified": "accepted"
     },
     {
-      "_id": "67a73ced73f62b1f6a59e381",
+      "_id": "67a73ced73f6211f6a59e38",
       "deviceCondition": "Fair",
       "listedBy": "Rahul Verma",
       "deviceStorage": "32 GB",
@@ -73,7 +163,187 @@
       "isVarified": "accepted"
     },
     {
-      "_id": "67a73ced73f62b1f6a59e382",
+      "_id": "67a73ced73f62b1k6a59e382",
+      "deviceCondition": "Excellent",
+      "listedBy": "Pooja Sharma",
+      "deviceStorage": "512 GB",
+      "images": [
+        {
+          "thumbImage": "https://www.oruphones.com/_next/image?url=https%3A%2F%2Fdemo-bucket-c2c-001.s3.amazonaws.com%2FFull-1739561154384-NX.webp&w=1200&q=75",
+          "fullImage": "https://www.oruphones.com/_next/image?url=https%3A%2F%2Fdemo-bucket-c2c-001.s3.amazonaws.com%2FFull-1739561154384-NX.webp&w=1200&q=75"
+        }
+      ],
+      "defaultImage": {
+        "fullImage": "https://www.oruphones.com/_next/image?url=https%3A%2F%2Fdemo-bucket-c2c-001.s3.amazonaws.com%2FFull-1739561154384-NX.webp&w=1200&q=75"
+      },
+      "listingState": "West Bengal",
+      "listingLocation": "Kolkata",
+      "isVarified": "accepted"
+    },
+    {
+      "_id": "67a73ced73f62b1f4a59e378",
+      "deviceCondition": "Excellent",
+      "listedBy": "Kiran",
+      "deviceStorage": "256 GB",
+      "images": [
+        {
+          "thumbImage": "https://res.cloudinary.com/dflq4agdp/image/upload/v1739604789/image_or9dnc.png",
+          "fullImage": "https://res.cloudinary.com/dflq4agdp/image/upload/v1739604789/image_or9dnc.png"
+        }
+      ],
+      "defaultImage": {
+        "fullImage": "https://res.cloudinary.com/dflq4agdp/image/upload/v1739604789/image_or9dnc.png"
+      },
+      "listingState": "Karnataka",
+      "listingLocation": "Bengaluru",
+      "isVarified": "rejected"
+    },
+    {
+      "_id": "67a73ced73f62b1f6a5ye379",
+      "deviceCondition": "Good",
+      "listedBy": "Amit Sharma",
+      "deviceStorage": "128 GB",
+      "images": [
+        {
+          "thumbImage": "https://res.cloudinary.com/dflq4agdp/image/upload/v1739604789/image_or9dnc.png",
+          "fullImage": "https://res.cloudinary.com/dflq4agdp/image/upload/v1739604789/image_or9dnc.png"
+        }
+      ],
+      "defaultImage": {
+        "fullImage": "https://res.cloudinary.com/dflq4agdp/image/upload/v1739604789/image_or9dnc.png"
+      },
+      "listingState": "Maharashtra",
+      "listingLocation": "Mumbai",
+      "isVarified": "accepted"
+    },
+    {
+      "_id": "67a73ced43f62b1f6a59e380",
+      "deviceCondition": "Like New",
+      "listedBy": "Sneha Patil",
+      "deviceStorage": "64 GB",
+      "images": [
+        {
+          "thumbImage": "https://res.cloudinary.com/dflq4agdp/image/upload/v1739604789/image_or9dnc.png",
+          "fullImage": "https://res.cloudinary.com/dflq4agdp/image/upload/v1739604789/image_or9dnc.png"
+        }
+      ],
+      "defaultImage": {
+        "fullImage": "https://res.cloudinary.com/dflq4agdp/image/upload/v1739604789/image_or9dnc.png"
+      },
+      "listingState": "Delhi",
+      "listingLocation": "New Delhi",
+      "isVarified": "accepted"
+    },
+    {
+      "_id": "67a73ced73f62b1f5a59e381",
+      "deviceCondition": "Fair",
+      "listedBy": "Rahul Verma",
+      "deviceStorage": "32 GB",
+      "images": [
+        {
+          "thumbImage": "https://res.cloudinary.com/dflq4agdp/image/upload/v1739604789/image_or9dnc.png",
+          "fullImage": "https://res.cloudinary.com/dflq4agdp/image/upload/v1739604789/image_or9dnc.png"
+        }
+      ],
+      "defaultImage": {
+        "fullImage": "https://res.cloudinary.com/dflq4agdp/image/upload/v1739604789/image_or9dnc.png"
+      },
+      "listingState": "Tamil Nadu",
+      "listingLocation": "Chennai",
+      "isVarified": "accepted"
+    },
+    {
+      "_id": "67a73ced73f62b1l6a59e382",
+      "deviceCondition": "Excellent",
+      "listedBy": "Pooja Sharma",
+      "deviceStorage": "512 GB",
+      "images": [
+        {
+          "thumbImage": "https://res.cloudinary.com/dflq4agdp/image/upload/v1739604789/image_or9dnc.png",
+          "fullImage": "https://res.cloudinary.com/dflq4agdp/image/upload/v1739604789/image_or9dnc.png"
+        }
+      ],
+      "defaultImage": {
+        "fullImage": "https://res.cloudinary.com/dflq4agdp/image/upload/v1739604789/image_or9dnc.png"
+      },
+      "listingState": "West Bengal",
+      "listingLocation": "Kolkata",
+      "isVarified": "accepted"
+    },
+    {
+      "_id": "67a73ced73f62b116a59e378",
+      "deviceCondition": "Excellent",
+      "listedBy": "Kiran",
+      "deviceStorage": "256 GB",
+      "images": [
+        {
+          "thumbImage": "https://res.cloudinary.com/dflq4agdp/image/upload/v1739604789/image_or9dnc.png",
+          "fullImage": "https://www.oruphones.com/_next/image?url=https%3A%2F%2Fdemo-bucket-c2c-001.s3.amazonaws.com%2FFull-1739561154384-NX.webp&w=1200&q=75"
+        }
+      ],
+      "defaultImage": {
+        "fullImage": "https://www.oruphones.com/_next/image?url=https%3A%2F%2Fdemo-bucket-c2c-001.s3.amazonaws.com%2FFull-1739561154384-NX.webp&w=1200&q=75"
+      },
+      "listingState": "Karnataka",
+      "listingLocation": "Bengaluru",
+      "isVarified": "rejected"
+    },
+    {
+      "_id": "67a73ced73f62b1f6a50e379",
+      "deviceCondition": "Good",
+      "listedBy": "Amit Sharma",
+      "deviceStorage": "128 GB",
+      "images": [
+        {
+          "thumbImage": "https://www.oruphones.com/_next/image?url=https%3A%2F%2Fdemo-bucket-c2c-001.s3.amazonaws.com%2FFull-1739561154384-NX.webp&w=1200&q=75",
+          "fullImage": "https://www.oruphones.com/_next/image?url=https%3A%2F%2Fdemo-bucket-c2c-001.s3.amazonaws.com%2FFull-1739561154384-NX.webp&w=1200&q=75"
+        }
+      ],
+      "defaultImage": {
+        "fullImage": "https://www.oruphones.com/_next/image?url=https%3A%2F%2Fdemo-bucket-c2c-001.s3.amazonaws.com%2FFull-1739561154384-NX.webp&w=1200&q=75"
+      },
+      "listingState": "Maharashtra",
+      "listingLocation": "Mumbai",
+      "isVarified": "accepted"
+    },
+    {
+      "_id": "67a73ced74f62b1f6a59e380",
+      "deviceCondition": "Like New",
+      "listedBy": "Sneha Patil",
+      "deviceStorage": "64 GB",
+      "images": [
+        {
+          "thumbImage": "https://www.oruphones.com/_next/image?url=https%3A%2F%2Fdemo-bucket-c2c-001.s3.amazonaws.com%2FFull-1739561154384-NX.webp&w=1200&q=75",
+          "fullImage": "https://www.oruphones.com/_next/image?url=https%3A%2F%2Fdemo-bucket-c2c-001.s3.amazonaws.com%2FFull-1739561154384-NX.webp&w=1200&q=75"
+        }
+      ],
+      "defaultImage": {
+        "fullImage": "https://www.oruphones.com/_next/image?url=https%3A%2F%2Fdemo-bucket-c2c-001.s3.amazonaws.com%2FFull-1739561154384-NX.webp&w=1200&q=75"
+      },
+      "listingState": "Delhi",
+      "listingLocation": "New Delhi",
+      "isVarified": "accepted"
+    },
+    {
+      "_id": "67a73ced73f62b1f5a59e381",
+      "deviceCondition": "Fair",
+      "listedBy": "Rahul Verma",
+      "deviceStorage": "32 GB",
+      "images": [
+        {
+          "thumbImage": "https://www.oruphones.com/_next/image?url=https%3A%2F%2Fdemo-bucket-c2c-001.s3.amazonaws.com%2FFull-1739561154384-NX.webp&w=1200&q=75",
+          "fullImage": "https://www.oruphones.com/_next/image?url=https%3A%2F%2Fdemo-bucket-c2c-001.s3.amazonaws.com%2FFull-1739561154384-NX.webp&w=1200&q=75"
+        }
+      ],
+      "defaultImage": {
+        "fullImage": "https://www.oruphones.com/_next/image?url=https%3A%2F%2Fdemo-bucket-c2c-001.s3.amazonaws.com%2FFull-1739561154384-NX.webp&w=1200&q=75"
+      },
+      "listingState": "Tamil Nadu",
+      "listingLocation": "Chennai",
+      "isVarified": "accepted"
+    },
+    {
+      "_id": "67a73ced75f62b1f6a59e382",
       "deviceCondition": "Excellent",
       "listedBy": "Pooja Sharma",
       "deviceStorage": "512 GB",
@@ -92,3 +362,4 @@
     }
   ]
 }
+

@@ -1,11 +1,16 @@
 import 'dart:convert';
 import 'package:dio/dio.dart';
+import 'package:oruphones/services/product_service.dart';
+import 'package:oruphones/ui/views/home/home_viewmodel.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../app/app.locator.dart';
+import '../models/product_model.dart';
 import '../models/user_model.dart';
 import 'api_service.dart';
 
 class AuthService {
   final ApiService _apiService = ApiService();
+
   UserModel? currentUser;
 
   // Send OTP (Login)
@@ -126,7 +131,7 @@ class AuthService {
     }
     return false;
   }
-
+  List<ProductModel> productList = [];
   // Logout
   Future<bool> logout() async {
     try {
@@ -134,7 +139,9 @@ class AuthService {
       if (response != null && response.statusCode == 200) {
         SharedPreferences prefs = await SharedPreferences.getInstance();
         await prefs.clear();
-        currentUser = null;
+         currentUser = null;
+         print(currentUser?.userName);
+        productList.clear();
         print("User Logged Out Successfully!");
         return true;
       }

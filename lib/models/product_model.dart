@@ -8,6 +8,7 @@ class ProductModel {
   final String listingState;
   final String listingLocation;
   final bool isVerified;
+  bool isLiked;
 
   ProductModel({
     required this.id,
@@ -19,6 +20,7 @@ class ProductModel {
     required this.listingState,
     required this.listingLocation,
     required this.isVerified,
+    required this.isLiked,
   });
 
   factory ProductModel.fromJson(Map<String, dynamic> json) {
@@ -36,6 +38,7 @@ class ProductModel {
       listingState: json["listingState"] ?? "",
       listingLocation: json["listingLocation"] ?? "",
       isVerified: json["isVarified"] == "accepted",
+      isLiked: false,
     );
   }
 }

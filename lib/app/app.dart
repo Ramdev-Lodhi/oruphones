@@ -17,7 +17,7 @@ import '../ui/views/home/home_view.dart';
     MaterialRoute(page: ConfirmNameView),
     MaterialRoute(page: MainView),
     MaterialRoute(page: HomeView),
-    MaterialRoute(page: FilterproductView, guards: []),
+    MaterialRoute(page: FilterproductView),
   ],
 )
 class AppRouter {}

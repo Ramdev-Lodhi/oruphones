@@ -100,7 +100,7 @@ class _HomeViewState extends State<HomeView> {
               ),
             ),
             ProductGrid(),
-            SizedBox(height: 20),
+            // SizedBox(height: 20),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16), // Add some spacing
               child: Row(

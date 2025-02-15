@@ -37,7 +37,11 @@ class Accordion extends StatelessWidget {
                       faq.question,
                       style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
                     ),
-                    trailing: Icon(faq.isExpanded ? Icons.close : Icons.add, color: Colors.black54),
+                    trailing: AnimatedRotation(
+                      turns: faq.isExpanded ? 0.13 : 0,
+                      duration: Duration(milliseconds: 300),
+                      child: Icon(Icons.add, color: Colors.black), // Same icon rotates
+                    ),
                     onExpansionChanged: (bool expanded) {
                       viewModel.toggleFAQ(index);
                     },

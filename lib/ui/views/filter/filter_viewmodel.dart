@@ -5,11 +5,13 @@ import '../../../app/app.locator.dart';
 import '../../../app/app.router.dart';
 import '../../../models/filter_model.dart';
 import '../../../models/product_model.dart';
-import '../../../services/filter_service.dart';
+import '../../../services/auth_service.dart';
+import '../../../services/product_service.dart';
 
 
 class FilterViewModel extends BaseViewModel {
-  final FilterService _filterService = FilterService();
+  final ProductService _productService = locator<ProductService>();
+  final AuthService _authService = locator<AuthService>();
   final NavigationService _navigationService = locator<NavigationService>();
   FilterModel? filters;
   String selectedCategory = "Brand";
@@ -25,7 +27,7 @@ class FilterViewModel extends BaseViewModel {
 
   Future<void> loadFilters() async {
     setBusy(true);
-    filters = await _filterService.fetchFilters();
+    filters = await _productService.fetchFilters();
     print(filters?.brands);
     if (filters != null) {
       print("filters is available");
@@ -142,12 +144,20 @@ class FilterViewModel extends BaseViewModel {
 
     setBusy(true);
     try {
-      var response = await _filterService.fetchFilteredData(filterParams);
+      var response = await _productService.fetchFilteredData(filterParams);
       print("Filtered Response: $response");
-
       if (response != null) {
         filterproduct = response.map<ProductModel>((json) => ProductModel.fromJson(json)).toList();
         print(filterproduct);
+        final currentUser = _authService.currentUser;
+        print(currentUser?.favListings);
+        if (currentUser?.favListings != null) {
+          for (var product in filterproduct) {
+            if (currentUser!.favListings.contains(product.id)) {
+              product.isLiked = true;
+            }
+          }
+        }
         print("Filtered Data Fetched Successfully!");
         _navigationService.navigateTo(
           Routes.filterproductView,
