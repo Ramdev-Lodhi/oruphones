@@ -1,4 +1,4 @@
-# ORUPhones
+# OruPhones Flutter Internship Assessment
 
 ## 📌 Project Overview
 ORUPhones is a mobile application designed for ORUPhones. The app provides a user-friendly interface with features such as brand listings, product filtering, FAQ sections, and Firebase notifications.
@@ -10,51 +10,69 @@ The project uses **Stacked (MVVM)** for state management. Stacked provides a cle
 
 ---
 
-## 🏗️ Architecture Followed
-The application follows the **MVVM (Model-View-ViewModel)** architecture with the following structure:
 
-```
+## 🏗️ Architecture & Tech Stack
 
-## 🚀 Steps to Set Up and Run the Project
+### 📌 State Management
 
-### **1️⃣ Prerequisites**
-- Flutter (Latest Stable Version)
-- Android Studio or VS Code
-- Firebase Project Setup (for notifications)
-- Google Drive for App Recording & APK
+- Used Stacked State Management (Preferred over Provider & Bloc for modularity).
+- Avoided using `setState`.
 
-### **2️⃣ Clone the Repository**
-```sh
-git clone https://github.com/your-repo/oruphones.git
-cd oruphones
-```
+### 📌 Architecture
 
-### **3️⃣ Install Dependencies**
-```sh
-flutter pub get
-```
-
-### **4️⃣ Configure Firebase**
-- Download `google-services.json` from Firebase Console and place it inside `android/app/`.
-- Enable Firebase Messaging for push notifications.
-
-### **5️⃣ Run the Project**
-```sh
-flutter run
-```
+| Component  | Responsibility |
+|------------|---------------|
+| **Views**  | UI components |
+| **ViewModels** | Business logic & API interactions |
+| **Services** | API handling & authentication |
+| **Widgets** | Reusable UI components |
 
 ---
 
-## ✅ App Recording & APK
+## ⚙️ Setup & Installation
 
-### **📹 Video Demo**
-[Click Here to Watch the App Demo](https://drive.google.com/file/d/1vCnxMQq3nio4_pOzZmfykSCfRwUlqm4U/view?usp=sharing)
+### 🔹 Prerequisites
 
-### **📦 APK Download**
-[Download ORUPhones APK](#)
+- Flutter SDK installed
+- Android Studio / VS Code
+- Firebase Project Setup (Google Services JSON added)
 
-📌 **Make sure to upload the video recording and APK to Google Drive and share the link during submission.**
+### 🔹 Steps to Run the Project
+
+1. **Clone the repository**:
+   ```sh
+   git clone https://github.com/your-username/oruphones-flutter.git
+   ```
+2. **Navigate to the project folder**:
+   ```sh
+   cd oruphones-flutter
+   ```
+3. **Get dependencies**:
+   ```sh
+   flutter pub get
+   ```
+4. **Run the project**:
+   ```sh
+   flutter run
+   ```
 
 ---
+
+## 📦 Submission Details
+
+### ✅ **GitHub Repository**
+
+- Maintained **clean commit history**.
+- Repository link: **[GitHub Repository Link]**
+
+### ✅ **App Demo & APK**
+
+- **Demo Video:** [Google Drive Link]
+- **Release APK:** [Google Drive Link]
+
+---
+
 
 📩 **For any queries, contact: ramdevlodhi9399@Gmail.com**
+### 🎯 **Thank you for reviewing my assignment!** 😊
+
