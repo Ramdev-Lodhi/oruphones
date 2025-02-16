@@ -10,8 +10,7 @@ The project uses **Stacked (MVVM)** for state management. Stacked provides a cle
 
 ---
 
-
-## 🏗️ Architecture & Tech Stack
+## 🏷️ Architecture & Tech Stack
 
 ### 📌 State Management
 
@@ -58,7 +57,7 @@ The project uses **Stacked (MVVM)** for state management. Stacked provides a cle
 
 ---
 
-## 📦 Submission Details
+## 🛆 Submission Details
 
 ### ✅ **GitHub Repository**
 
@@ -71,6 +70,14 @@ The project uses **Stacked (MVVM)** for state management. Stacked provides a cle
 - **Release APK:** [Google Drive Link]
 
 ---
+
+## 📸 App Screenshots
+
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/b0a1dae7-35bd-41ed-a130-4049569f4f87" alt="App Screenshot 1" width="50%" />
+  <img src="https://github.com/user-attachments/assets/e8115a32-1d02-4628-9680-7c646df0a251" alt="App Screenshot 2" width="45%" />
+</p>
 
 
 📩 **For any queries, contact: ramdevlodhi9399@Gmail.com**
