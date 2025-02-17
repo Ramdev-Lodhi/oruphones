@@ -62,12 +62,12 @@ The project uses **Stacked (MVVM)** for state management. Stacked provides a cle
 ### ✅ **GitHub Repository**
 
 - Maintained **clean commit history**.
-- Repository link: **[GitHub Repository Link]**
+- Repository link: **[GitHub Repository Link](https://github.com/Ramdev-Lodhi/oruphones)**
 
 ### ✅ **App Demo & APK**
 
-- **Demo Video:** [Google Drive Link]
-- **Release APK:** [Google Drive Link]
+- **Demo Video:** [Vedio Link](https://drive.google.com/file/d/11TToGCkNCCcaJvBoLb6uGfexHK9wrGlq/view?usp=drive_link)
+- **Release APK:** [Download Apk](https://drive.google.com/file/d/1iHM4XS3LdMCrHURCncfNZuhsbPzENrRC/view?usp=drive_link)
 
 ---
 
