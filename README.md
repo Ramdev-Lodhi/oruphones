@@ -40,11 +40,11 @@ The project uses **Stacked (MVVM)** for state management. Stacked provides a cle
 
 1. **Clone the repository**:
    ```sh
-   git clone https://github.com/your-username/oruphones-flutter.git
+   git clone https://github.com/Ramdev-Lodhi/oruphones.git
    ```
 2. **Navigate to the project folder**:
    ```sh
-   cd oruphones-flutter
+   cd oruphones
    ```
 3. **Get dependencies**:
    ```sh
